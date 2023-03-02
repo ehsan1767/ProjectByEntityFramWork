@@ -48,6 +48,9 @@ namespace EducationalInstitutions.Migrations
                     b.Property<int>("CourseId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
 
@@ -58,7 +61,10 @@ namespace EducationalInstitutions.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("StatDate")
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("TeacherId")
@@ -70,7 +76,7 @@ namespace EducationalInstitutions.Migrations
 
                     b.HasIndex("TeacherId");
 
-                    b.ToTable("ClassRoom");
+                    b.ToTable("ClassRooms");
                 });
 
             modelBuilder.Entity("EducationalInstitutions.Models.Course", b =>
@@ -87,18 +93,18 @@ namespace EducationalInstitutions.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("courses");
+                    b.ToTable("Courses");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Name = "HardWare"
+                            Name = "SoftWare"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "SoftWare"
+                            Name = "HardWare"
                         });
                 });
 
@@ -126,7 +132,7 @@ namespace EducationalInstitutions.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("students");
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("EducationalInstitutions.Models.Teacher", b =>
@@ -142,20 +148,32 @@ namespace EducationalInstitutions.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("phone")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("teachers");
+                    b.ToTable("Teachers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FirstName = "Hamed",
+                            LastName = "Fakori"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            FirstName = "Sohrab",
+                            LastName = "Amiri"
+                        });
                 });
 
             modelBuilder.Entity("ClassRoomStudent", b =>
