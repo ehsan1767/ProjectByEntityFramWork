@@ -8,60 +8,52 @@ namespace EducationalInstitutions
     {
         static void Main(string[] args)
         {
-            using EducationalInstitutionsContext context = new EducationalInstitutionsContext();
+            //InsertTecher();
+            //InsertMultipleTeacher();
+            InsertMultipleDifferentObject();
+
+        }
 
 
-            Teacher t1 = new Teacher();
+        private static void InsertTecher()
+        {
+            var t1 = new Teacher() { FirstName = "hamed", LastName = "fakori", Lesson = "software" };
+            using (var context = new EducationalInstitutionsContext())
             {
-                t1.FirstName = "hamed";
-                t1.LastName = "fakri";
-                t1.Lesson = "software";
+                context.Add(t1);
+                context.SaveChanges();
+            }
+        }
+
+        private static void InsertMultipleTeacher()
+        {
+            var t1 = new Teacher() { FirstName = "ali", LastName = "khodaei", Lesson = "software" };
+            var t2 = new Teacher() { FirstName = "mohsen", LastName = "sazgar", Lesson = "hardware" };
+            var t3 = new Teacher() { FirstName = "sara", LastName = "azizi", Lesson = "hardware" };
+
+            using (var context = new EducationalInstitutionsContext())
+            {
+                context.AddRange(t1,t3);
+                context.SaveChanges();
             }
 
-            Teacher t2 = new Teacher();
+        }
+
+        private static void InsertMultipleDifferentObject()
+        {
+            var t1 = new Teacher() { FirstName = "a" ,LastName="b",Lesson="r" };
+            var c1 = new Course()
+            { CourseName="r",
+            CoursePresentationDay = "sat",
+            co
+            };
+            var s1 = new Student() { FirstName = "ehsan", LastName = "salahi", course= "r", StdId = 1234; };
+
+            using (var context = new EducationalInstitutionsContext())
             {
-                t1.FirstName = "hamed";
-                t1.LastName = "fakri";
-                t1.Lesson = "software";
+                context.AddRange();
+                context.SaveChanges();
             }
-
-            context.teachers.Add(t1);
-            context.teachers.Add(t2);
-
-            Student s1 = new Student();
-            {
-                s1.FirstName = "hamed";
-                s1.LastName = "fakri";
-                // s1.course = "hardware";
-            }
-
-            Student s2 = new Student();
-            {
-                s2.FirstName = "hamed";
-                s2.LastName = "fakri";
-                //s2.course = "hardware";
-            }
-
-            context.students.Add(s1);
-            context.students.Add(s2);
-
-            Course c1 = new Course();
-            {
-                c1.CourseName = "software";
-                c1.CoursePresentationDay = "sat,tus";
-                c1.CourseTime = "14 - 16";
-            }
-
-            Course c2 = new Course();
-            {
-                c2.CourseName = "hardware";
-                c2.CoursePresentationDay = "tus";
-                c2.CourseTime = "14 - 16";
-            }
-
-            context.courses.Add(c1);
-            context.courses.Add(c2);
-            context.SaveChanges();
         }
     }
 }

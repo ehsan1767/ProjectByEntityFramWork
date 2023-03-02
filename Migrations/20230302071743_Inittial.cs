@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace EducationalInstitutions.Migrations
 {
     /// <inheritdoc />
-    public partial class updatedatabase : Migration
+    public partial class Inittial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,8 +34,8 @@ namespace EducationalInstitutions.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Lesson = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -52,18 +53,21 @@ namespace EducationalInstitutions.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CourseName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CoursePresentationDay = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CourseTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     teacherId = table.Column<int>(type: "int", nullable: false),
-                    StudentId = table.Column<int>(type: "int", nullable: true)
+                    studentId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_courses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_courses_students_StudentId",
-                        column: x => x.StudentId,
+                        name: "FK_courses_students_studentId",
+                        column: x => x.studentId,
                         principalTable: "students",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_courses_teachers_teacherId",
                         column: x => x.teacherId,
@@ -73,9 +77,9 @@ namespace EducationalInstitutions.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_courses_StudentId",
+                name: "IX_courses_studentId",
                 table: "courses",
-                column: "StudentId");
+                column: "studentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_courses_teacherId",

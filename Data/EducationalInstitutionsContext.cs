@@ -18,6 +18,28 @@ namespace EducationalInstitutions.Data
         {
             optionsBuilder.UseSqlServer("Server = PC67\\DEVELOPER2022;DataBase = EducationalInstitutions1;Integrated Security = true;TrustServerCertificate=True");
         }
-      
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Teacher>()
+                .HasKey(e => e.Id);
+                
+            modelBuilder.Entity<Teacher>()
+                .Property(c => c.FirstName)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            modelBuilder.Entity<Teacher>()
+                .Property(c => c.LastName)
+                .IsRequired()
+            .HasMaxLength(50);
+
+
+            //one to one
+           // modelBuilder.Entity<Teacher>()
+                
+        }
+
+
+
     }
 }

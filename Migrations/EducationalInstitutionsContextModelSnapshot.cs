@@ -42,7 +42,13 @@ namespace EducationalInstitutions.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("StudentId")
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("studentId")
                         .HasColumnType("int");
 
                     b.Property<int>("teacherId")
@@ -50,7 +56,7 @@ namespace EducationalInstitutions.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("StudentId");
+                    b.HasIndex("studentId");
 
                     b.HasIndex("teacherId");
 
@@ -100,11 +106,13 @@ namespace EducationalInstitutions.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Lesson")
                         .IsRequired()
@@ -120,15 +128,19 @@ namespace EducationalInstitutions.Migrations
 
             modelBuilder.Entity("EducationalInstitutions.Models.Course", b =>
                 {
-                    b.HasOne("EducationalInstitutions.Models.Student", null)
+                    b.HasOne("EducationalInstitutions.Models.Student", "student")
                         .WithMany("course")
-                        .HasForeignKey("StudentId");
+                        .HasForeignKey("studentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("EducationalInstitutions.Models.Teacher", "teacher")
                         .WithMany("courses")
                         .HasForeignKey("teacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("student");
 
                     b.Navigation("teacher");
                 });
