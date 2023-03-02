@@ -8,9 +8,9 @@ namespace EducationalInstitutions
     {
         static void Main(string[] args)
         {
-            //InsertTecher();
+            InsertTecher();
             //InsertMultipleTeacher();
-            InsertMultipleDifferentObject();
+            //InsertMultipleDifferentObject();
 
         }
 
@@ -21,6 +21,25 @@ namespace EducationalInstitutions
             using (var context = new EducationalInstitutionsContext())
             {
                 context.Add(t1);
+                context.SaveChanges();
+            }
+        }
+        private static void InsertClassRoom()
+        {
+             
+            var cr1 = new ClassRoom() {
+                StatDate= DateTime.Now,
+                EndTime= DateTime.Now.AddHours(2),
+                IsCanceled= false,
+                Room="5",
+                CourseId=1,
+                TeacherId=1,
+                Students = new List<Student> { new Student { FirstName="ehsan",LastName="salahi"},
+                                               new Student { FirstName="ali",LastName="azizi"} }
+            };
+            using (var context = new EducationalInstitutionsContext())
+            {
+                context.Add(cr1);
                 context.SaveChanges();
             }
         }

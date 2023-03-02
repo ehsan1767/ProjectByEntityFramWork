@@ -16,7 +16,7 @@ namespace EducationalInstitutions.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server = PC67\\DEVELOPER2022;DataBase = EducationalInstitutions3;Integrated Security = true;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Server = PC67\\DEVELOPER2022;DataBase = EducationalInstitutions;Integrated Security = true;TrustServerCertificate=True");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -35,11 +35,11 @@ namespace EducationalInstitutions.Data
 
 
             //one to one
-           // modelBuilder.Entity<Teacher>()
-                
+            // modelBuilder.Entity<Teacher>()
+            modelBuilder.Entity<Course>()
+                 .HasData(new Course { Id = 1, Name = "HardWare" },
+                          new Course { Id=2,Name="SoftWare"});
         }
-
-
 
     }
 }
