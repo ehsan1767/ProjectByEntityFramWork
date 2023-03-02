@@ -9,12 +9,7 @@ namespace EducationalInstitutions.Models
     public class Course
     {
         public int Id { get; set; }
-        public string CourseName { get; set; }
-        public string CoursePresentationDay { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public string CourseTime { get; set; }
-        public Teacher teacher { get; set; }
-        public Student student { get; set; }
+        public string Name { get; set; }
+   
     }
 }

@@ -17,7 +17,7 @@ namespace EducationalInstitutions
 
         private static void InsertTecher()
         {
-            var t1 = new Teacher() { FirstName = "hamed", LastName = "fakori", Lesson = "software" };
+            var t1 = new Teacher() { FirstName = "hamed", LastName = "fakori"};
             using (var context = new EducationalInstitutionsContext())
             {
                 context.Add(t1);
@@ -27,9 +27,9 @@ namespace EducationalInstitutions
 
         private static void InsertMultipleTeacher()
         {
-            var t1 = new Teacher() { FirstName = "ali", LastName = "khodaei", Lesson = "software" };
-            var t2 = new Teacher() { FirstName = "mohsen", LastName = "sazgar", Lesson = "hardware" };
-            var t3 = new Teacher() { FirstName = "sara", LastName = "azizi", Lesson = "hardware" };
+            var t1 = new Teacher() { FirstName = "ali", LastName = "khodaei"};
+            var t2 = new Teacher() { FirstName = "mohsen", LastName = "sazgar" };
+            var t3 = new Teacher() { FirstName = "sara", LastName = "azizi" };
 
             using (var context = new EducationalInstitutionsContext())
             {
@@ -41,13 +41,10 @@ namespace EducationalInstitutions
 
         private static void InsertMultipleDifferentObject()
         {
-            var t1 = new Teacher() { FirstName = "a" ,LastName="b",Lesson="r" };
-            var c1 = new Course()
-            { CourseName="r",
-            CoursePresentationDay = "sat",
-            co
-            };
-            var s1 = new Student() { FirstName = "ehsan", LastName = "salahi", course= "r", StdId = 1234; };
+            var t1 = new Teacher() { FirstName = "a" ,LastName="b" };
+            var c1 = new Course();
+           
+            var s1 = new Student() { FirstName = "ehsan", LastName = "salahi" };
 
             using (var context = new EducationalInstitutionsContext())
             {

@@ -11,11 +11,8 @@ namespace EducationalInstitutions.Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Lesson { get; set; }  
         public string? phone { get; set; }
         public  string? Email { get; set; }
-
-        public List<Course> courses { get; set; }
 
     }
 }

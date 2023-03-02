@@ -13,8 +13,7 @@ namespace EducationalInstitutions.Models
         public string LastName { get; set; }
         public string? phone { get; set; }
         public string? Email { get; set; }
-        public int StdId { get; set; }
-        //Foreingn Key
-        public List <Course> course { get; set; }
+
+        public List<ClassRoom> ClassRooms { get; set; }
     }
 }

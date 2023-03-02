@@ -16,7 +16,7 @@ namespace EducationalInstitutions.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server = PC67\\DEVELOPER2022;DataBase = EducationalInstitutions1;Integrated Security = true;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Server = PC67\\DEVELOPER2022;DataBase = EducationalInstitutions3;Integrated Security = true;TrustServerCertificate=True");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
