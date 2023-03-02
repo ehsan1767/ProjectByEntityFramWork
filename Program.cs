@@ -38,10 +38,13 @@ namespace EducationalInstitutions
                         StudentQuery();
                         break;
                     case '4':
-                        ClassRoomFullInfo();
+                        //ClassRoomFullInfo();
                         break;
                     case '5':
-                        AddCourse();
+                       // AddCourse();
+                        break;
+                    case '6':
+                        //EditCourse();
                         break;
 
                     default:
