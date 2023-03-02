@@ -11,7 +11,7 @@ namespace EducationalInstitutions.Models
         public int Id { get; set; }
         public DateTime StatDate { get; set; }
         public DateTime EndTime { get; set; }
-        public bool IsCancel { get; set; }
+        public bool IsCanceled { get; set; }
         public string Room { get; set; }
 
         public int CourseId { get; set; }
@@ -20,7 +20,7 @@ namespace EducationalInstitutions.Models
         public int TeacherId { get; set; }
         public Teacher Teacher { get; set;}
 
-        public  List<Student> students { get; set; }
+        public  List<Student> Students { get; set; }
 
 
     }
